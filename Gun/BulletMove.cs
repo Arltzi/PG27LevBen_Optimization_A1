@@ -4,6 +4,7 @@ public class BulletMove : MonoBehaviour {
 
     void OnBecameInvisible()
     {
+        // called when bullet flies out of camera.
         this.gameObject.SetActive(false); // go swimming
     }
 

@@ -6,7 +6,7 @@ public class Shoot : MonoBehaviour {
     public GameObject spawnPos;
     public GameObject player;
     AudioSource gunSound;
-    float shootCoolDown = 0;
+    float shootCoolDown = 5f;
 
 	void Start () {
         player = GameObject.Find("Player");
@@ -16,8 +16,8 @@ public class Shoot : MonoBehaviour {
     void ShootBullet()
     {
         //    Instantiate(bullet, spawnPos.transform.position, spawnPos.transform.rotation);
-        //    gunSound.Play();
-        GameObject bullet = ObjectPooler.SharedInstance.GetPooledObject("Bullet");
+        //    gunSound.Play(); i could have just deleted this
+        GameObject bullet = ObjectPooler.SharedInstance.GetPooledObject("bullet"); // yeah turret is capitalized and this isnt. boohoo 
         if (bullet != null)
         {
             bullet.transform.position = spawnPos.transform.position;
@@ -44,7 +44,7 @@ public class Shoot : MonoBehaviour {
                 shootCoolDown = Random.Range(3,5);
             }
             else
-                shootCoolDown -= 0.1f;
+                shootCoolDown -= Time.deltaTime;
         }
 	}
 }
