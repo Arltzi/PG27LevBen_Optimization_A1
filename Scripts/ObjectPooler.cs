@@ -19,7 +19,14 @@ public class ObjectPooler : MonoBehaviour
 
     void Awake()
     {
-        SharedInstance = this;
+        if (SharedInstance == null)
+        {
+            SharedInstance = this;
+        }
+        else if (SharedInstance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Start()
@@ -36,7 +43,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
-    // tags must match the prefab tag in game 
+    // tags must match the prefab tag in game
     public GameObject GetPooledObject(string tag)
     {
         for (int i = 0; i < pooledObjects.Count; i++)
