@@ -36,6 +36,7 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
+    // tags must match the prefab tag in game 
     public GameObject GetPooledObject(string tag)
     {
         for (int i = 0; i < pooledObjects.Count; i++)
