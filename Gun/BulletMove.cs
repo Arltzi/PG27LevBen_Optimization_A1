@@ -4,7 +4,7 @@ public class BulletMove : MonoBehaviour {
 
     void OnBecameInvisible()
     {
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false); // go swimming
     }
 
     void Update()

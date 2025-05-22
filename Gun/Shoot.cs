@@ -15,7 +15,15 @@ public class Shoot : MonoBehaviour {
 
     void ShootBullet()
     {
-        Instantiate(bullet, spawnPos.transform.position, spawnPos.transform.rotation);
+        //    Instantiate(bullet, spawnPos.transform.position, spawnPos.transform.rotation);
+        //    gunSound.Play();
+        GameObject bullet = ObjectPooler.SharedInstance.GetPooledObject("Bullet");
+        if (bullet != null)
+        {
+            bullet.transform.position = spawnPos.transform.position;
+            bullet.transform.rotation = spawnPos.transform.rotation;
+            bullet.SetActive(true);
+        }
         gunSound.Play();
     }
 
